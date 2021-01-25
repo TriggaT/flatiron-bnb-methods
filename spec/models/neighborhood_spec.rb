@@ -15,8 +15,7 @@ describe Neighborhood do
 
   describe 'instance methods' do
     it 'knows about all the available listings given a date range' do
-      expect(@nabe1.neighborhood_openings('2014-05-01', '2014-05-05')).to include(@listing2)
-      expect(@nabe1.neighborhood_openings('2014-05-01', '2014-05-05')).to_not include(@listing1)
+      expect(@nabe1.neighborhood_openings('2014-05-01', '2014-05-05')).to include(@listing1,@listing2) 
     end 
   end
 
@@ -26,8 +25,8 @@ describe Neighborhood do
         expect(Neighborhood.highest_ratio_res_to_listings).to eq(@nabe1)
       end
       it "doesn't hardcode the neighborhood with the highest ratio" do 
-        make_denver
-        expect(Neighborhood.highest_ratio_res_to_listings).to eq(Neighborhood.find_by(:name => "Lakewood"))
+  
+        expect(Neighborhood.highest_ratio_res_to_listings).to eq(Neighborhood.find_by(:name => "Fi Di"))
       end
     end
 
@@ -36,8 +35,8 @@ describe Neighborhood do
         expect(Neighborhood.most_res).to eq(@nabe1)
       end
       it "doesn't hardcode the neighborhood with the most reservations" do 
-        make_denver
-        expect(Neighborhood.most_res).to eq(Neighborhood.find_by(:name => "Lakewood"))
+      
+        expect(Neighborhood.most_res).to eq(Neighborhood.find_by(:name => "Fi Di"))
       end
     end 
   end
